@@ -2,6 +2,8 @@
 
 ID="${ID:-1}"
 RELAY="${RELAY:-1900:239.255.255.250}"
+RUST_LOG=${RUST_LOG:-info}
+export RUST_LOG
 
 command="/udp-broadcast-relay-rs --id $ID"
 
@@ -13,9 +15,6 @@ done
 for relay in $RELAY; do
   command="$command --relay $relay"
 done
-
-RUST_LOG=info
-export RUST_LOG
 
 echo $command
 exec $command
