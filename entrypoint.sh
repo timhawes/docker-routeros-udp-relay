@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -n "$1" ]; then
+  exec /udp-broadcast-relay-rs $@
+fi
+
 ID="${ID:-1}"
 RELAY="${RELAY:-1900:239.255.255.250}"
 RUST_LOG=${RUST_LOG:-info}
